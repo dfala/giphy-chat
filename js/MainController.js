@@ -1,4 +1,4 @@
-angular.module('giphyApp', [])
+angular.module('giphyApp')
 
 .controller('MainController', function ($scope, getDataService) {
 
