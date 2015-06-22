@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html ng-app="giphyApp">
+<head>
+	<title>Giphy Chatroom</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+</head>
+<body ng-controller="MainController">
+
+	<form ng-submit="queryGiphy(searchQuery)">
+		<input placeholder="Search a giphy" ng-model="searchQuery">
+		<button>Search</button>
+	</form>
+
+	<div ng-repeat="gif in gifs | limitTo: 5">
+		<img ng-src="{{gif.images.fixed_height.url}}" />
+	</div>
+
+
+	<script type="text/javascript" src="MainController.js"></script>
+	<script type="text/javascript" src="getDataService.js"></script>
+</body>
+</html>
