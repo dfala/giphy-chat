@@ -26,6 +26,8 @@ angular.module('giphyApp')
 	// save new gif to firebase
 	var saveMessage = function (gifData) {
 		// gifRef.push(gifData);
+		gifData.timestamp = Firebase.ServerValue.TIMESTAMP;
+		
 		var list = $firebaseArray(gifRef);
 		list.$add(gifData);
 	}
