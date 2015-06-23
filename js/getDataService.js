@@ -1,12 +1,11 @@
 angular.module('giphyApp')
 
-.factory('getDataService', function ($http, $q, $firebaseArray) {
+.factory('getDataService', function ($http, $q) {
 	var service = {};
 	var gifRef = new Firebase('https://gifschat.firebaseio.com/gifs');
 
 	service.getGifs = function (searchQuery) {
 		var deferred = $q.defer();
-		// Visit API docs for more info: https://github.com/Giphy/GiphyAPI
 		var url = "https://api.giphy.com/v1/gifs/search?q=";
 		var apiKey = "&api_key=dc6zaTOxFJmzC";
 
@@ -33,21 +32,33 @@ angular.module('giphyApp')
 	}
 
 
-
 	// get initial data
 	service.getInitialData = function () {
 		var deferred = $q.defer();
 
-		gifRef.on('value', function (snapshot) {
-			console.log('firebase data:', snapshot.val())
+		gifRef.once('value', function (snapshot) {
 			var data = snapshot.val();
 			var tempArray = [];
-
 			for (var key in data) {
 				tempArray.unshift(data[key]);
 			}
 
 			deferred.resolve(tempArray);
+		})
+
+		return deferred.promise;
+	}
+
+
+	// this is supposed to load everytime a new child is added
+	service.getMoreData = function () {
+		var deferred = $q.defer();
+
+		gifRef.on('child_added', function (snapshot) {
+			var data = snapshot.val();
+			console.log(data);
+			
+			deferred.resolve(data);
 		})
 
 		return deferred.promise;

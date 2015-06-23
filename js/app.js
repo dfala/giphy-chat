@@ -1,1 +1,1 @@
-angular.module('giphyApp', ['firebase']);
+angular.module('giphyApp', []);
