@@ -4,6 +4,8 @@
 <head>
 	<title>Giphy Chatroom</title>
 
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 
@@ -19,18 +21,16 @@
 
 <body ng-controller="MainController">
 
-	<form ng-submit="queryGiphy(searchQuery)">
-		<input placeholder="Search a giphy" ng-model="searchQuery">
-		<button>Search</button>
-	</form>
-
-	<div>
-		<img ng-src="{{gif.images.fixed_height.url}}" />
-	</div>
+	<div class="container">
+		<form ng-submit="queryGiphy(searchQuery)" class="search-form">
+			<input placeholder="Say it with a gif" ng-model="searchQuery" class="search-input">
+			<button class="search-btn">Spit it</button>
+		</form>
 
 
-	<div ng-repeat="message in messages | orderBy:'timestamp':true">
-		<img ng-src="{{message.images.fixed_height.url}}" />
+		<div ng-repeat="message in messages | orderBy:'timestamp':true" class="incoming-gif">
+			<img ng-src="{{message.images.fixed_height.url}}" />
+		</div>
 	</div>
 
 
