@@ -13,7 +13,4 @@ angular.module('giphyApp')
 
 		$scope.searchQuery = '';
 	}
-
-	//focus on input field
-	$('#input-field').focus();
 })
