@@ -29,7 +29,7 @@
 	</div>
 
 
-	<div ng-repeat="message in messages track by $index">
+	<div ng-repeat="message in messages | orderBy:'timestamp':true">
 		<img ng-src="{{message.images.fixed_height.url}}" />
 	</div>
 
