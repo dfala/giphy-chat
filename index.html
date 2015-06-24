@@ -31,7 +31,7 @@
 		</form>
 
 
-		<div ng-repeat="message in messages | orderBy:'timestamp':true" class="incoming-gif">
+		<div ng-repeat="message in messages | orderBy:'votes':true" class="incoming-gif">
 			<div class="gif-wrapper">
 				<img class="gif" ng-src="{{message.images.fixed_height.url}}" />
 				<div class="searched-term">{{message.searchedQuery}}</div>
