@@ -12,14 +12,22 @@ angular.module('giphyApp')
 
 		$http.get(url)
 			.success(function (response) {
-				var randomNum = Math.round(Math.random() * (response.data.length - 1));
-				var gif = response.data[randomNum];
-
-				saveMessage(gif, searchQuery);
+				checkRating(response, searchQuery);
 			})
 			.error(function (err) {
 				throw new Error(err);
 			});
+	}
+
+	var checkRating = function (gifArray, searchQuery) {
+		var randomNum = Math.round(Math.random() * (gifArray.data.length - 1));
+		var gif = gifArray.data[randomNum];
+
+		if (gif.rating === 'r') {
+			checkRating(gifArray);
+		} else {
+			saveMessage(gif, searchQuery);
+		}
 	}
 
 

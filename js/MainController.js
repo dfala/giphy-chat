@@ -11,7 +11,10 @@ angular.module('giphyApp')
 		if (!query) return console.warn('No query :(');
 		giphyService.getGifs(query);
 
-		$scope.searchQuery = '';
+		$timeout(function () {
+			$scope.searchQuery = '';
+			$('#input-field').focus();
+		})
 	}
 
 	$scope.upVote = function (messageId, voteCount) {
