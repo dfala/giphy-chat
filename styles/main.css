@@ -65,12 +65,21 @@ body {
 	position: relative;
 }
 
-.gif {
-	max-width: 100%;
+.gif-wrapper {
 	background-color: #eee;
-	padding: 20px;
+	padding: 20px 20px 10px 20px;
 	border-radius: 2px;
+
+	display: inline-block;
 }
+	.gif-wrapper .searched-term{
+		color: #818181;
+		margin-top: 3px;
+	}
+
+	.gif-wrapper .gif {
+		max-width: 100%;
+	}
 
 	.voting {
 		position: absolute;

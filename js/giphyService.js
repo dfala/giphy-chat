@@ -15,7 +15,7 @@ angular.module('giphyApp')
 				var randomNum = Math.round(Math.random() * (response.data.length - 1));
 				var gif = response.data[randomNum];
 
-				saveMessage(gif);
+				saveMessage(gif, searchQuery);
 			})
 			.error(function (err) {
 				throw new Error(err);
@@ -24,10 +24,11 @@ angular.module('giphyApp')
 
 
 	// save new gif to firebase
-	var saveMessage = function (gifData) {
+	var saveMessage = function (gifData, searchQuery) {
 		// gifRef.push(gifData);
 		gifData.timestamp = Firebase.ServerValue.TIMESTAMP;
 		gifData.votes = 0;
+		gifData.searchedQuery = searchQuery;
 		
 		var list = $firebaseArray(gifRef);
 		list.$add(gifData);
