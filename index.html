@@ -32,7 +32,12 @@
 
 
 		<div ng-repeat="message in messages | orderBy:'timestamp':true" class="incoming-gif">
-			<img ng-src="{{message.images.fixed_height.url}}" />
+			<img class="gif" ng-src="{{message.images.fixed_height.url}}" />
+			<div class="voting">
+				<div class="vote-count">24</div>
+				<div class="vote arrow-up" ng-click="voteUp()"></div>
+				<div class="vote arrow-down" ng-click="voteDown()"></div>
+			</div>
 		</div>
 	</div>
 
