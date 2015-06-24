@@ -14,7 +14,7 @@ angular.module('giphyApp')
 		$timeout(function () {
 			$scope.searchQuery = '';
 			$('#input-field').focus();
-		})
+		}, 1);
 	}
 
 	$scope.upVote = function (messageId, voteCount) {
