@@ -34,9 +34,9 @@
 		<div ng-repeat="message in messages | orderBy:'timestamp':true" class="incoming-gif">
 			<img class="gif" ng-src="{{message.images.fixed_height.url}}" />
 			<div class="voting">
-				<div class="vote-count">24</div>
-				<div class="vote arrow-up" ng-click="voteUp()"></div>
-				<div class="vote arrow-down" ng-click="voteDown()"></div>
+				<div class="vote-count">{{message.votes}}</div>
+				<div class="vote arrow-up" ng-click="upVote(message.$id, message.votes)"></div>
+				<div class="vote arrow-down" ng-click="downVote(message.$id, message.votes)"></div>
 			</div>
 		</div>
 	</div>
@@ -45,7 +45,10 @@
 
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/MainController.js"></script>
+
 	<script type="text/javascript" src="js/giphyService.js"></script>
+	<script type="text/javascript" src="js/votingService.js"></script>
+
 	<script type="text/javascript" src="js/directives/uxDirective.js"></script>
 </body>
 </html>
